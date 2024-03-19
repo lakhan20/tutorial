@@ -1,0 +1,86 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/css/style.css" rel="stylesheet" />
+    <title>register</title>
+</head>
+<body>
+    <div class="register-card">
+        <h1>Register</h1>
+        <br />
+        <input type="text" id="txtFullname" placeholder="Enter Full Name" autocomplete="off" />
+        <input type="text" id="txtUsername" placeholder="Enter User Name" autocomplete="off" />
+        <input type="password" id="txtPassword" placeholder=" Enter Password" autocomplete="off" />
+
+        <input type="password" id="txtRePassword" placeholder="Re-Enter Password" autocomplete="off" />
+
+        <button type="submit" id="btnRegister">Register</button>
+
+    </div>
+</body>
+</html>
+<script src="~/scripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $("[id$=btnRegister]").on("click", function () {
+        var valid = 0;
+        if ($("[id$=txtFullname]").val() == "") {
+            alert("Enter Full Name.");
+            $("[id$=txtFullname]").focus();
+            valid = 1;
+        }
+       if ($("[id$=txtUsername]").val() == "") {
+            alert("Enter User Name.");
+            $("[id$=txtUsername]").focus();
+            valid = 1;
+        }
+       if ($("[id$=txtPassword").val() == "") {
+            alert("Enter Password.");
+            $("[id$=txtPassword]").focus();
+            valid = 1;
+        }
+
+      if ($("[id$=txtRePassword").val() == "") {
+            alert("Re-Enter Password.");
+            $("[id$=txtRePassword]").focus();
+            valid = 1;
+        }
+      if ($("[id$=txtPassword").val() != $("[id$=txtRePassword").val()) {
+            alert("Password Mismatched.");
+        valid = 1;
+        return;
+
+        }
+
+        if (valid == 0) {
+            $.ajax({
+                type: "POST",
+                url: "/Register/insertData",
+                data: "{'fullname'  : '" + $("[id$=txtFullname]").val() + "','username'  : '" + $("[id$=txtUsername]").val() + "','password':'" + $("[id$=txtRePassword").val() + "'}",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    alert(response[0]);
+                    $("[id$=txtFullname]").val("");
+                    $("[id$=txtUsername]").val("");
+                    $("[id$=txtPassword]").val("");
+                    $("[id$=txtRePassword]").val(""); 
+
+                },
+                error: function (response) {
+                    alert(response.toString());
+                    console.log("resp : ", response);
+                }
+
+            });
+        }
+    });
+
+</script>

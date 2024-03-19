@@ -1,0 +1,44 @@
+﻿body {
+    background-color:#4fb2d8;
+}
+.register-card{
+    padding:40px;
+    width:274px;
+    background-color:#ffffff;
+    margin:0 auto 10px;
+    border-radius:2px;
+    box-shadow:0px 2px 2px rgba(0,0,0,0.3);
+    overflow:hidden;
+    text-transform:uppercase;
+}
+.register-card h1{
+    font-weight:100;
+    text-align:center;
+    font-size:2.3em;
+}
+.register-card input[type=text],input[type=password]{
+    height:36px;
+    font-size:16px;
+    width:100%;
+    margin-bottom:10px;
+    background:#ffffff;
+    padding:0 8px;
+    box-sizing:border-box;
+    border:1px solid #d9d9d9;
+}
+.register-card button[type=submit]{
+    width:100%;
+    display:block;
+    margin-bottom:10px;
+    position:relative;
+    text-align:center;
+    font-size:14px;
+    font-weight:700;
+    height:36px;
+    padding:0 8px;
+    background-color:#4d90fe;
+    border:0px;
+    color:#ffffff;
+    text-transform:uppercase;
+
+}
